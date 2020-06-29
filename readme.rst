@@ -1,5 +1,5 @@
 ###################
-Indonesia IT
+Ibnu Adam
 ###################
 
-Please visit http://indonesiait.com
+Please visit www.ibnadm.com
