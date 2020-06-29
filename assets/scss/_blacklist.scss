@@ -1,0 +1,24 @@
+.header-blacklist {
+  height: 120px;
+  background-size: cover;
+  color: #fff;
+}
+
+.content-blacklist {
+  padding-top: 3rem;
+  .search-blacklist {
+    background: #FFFFFF !important;
+    border: 1px solid #E0E0E0 !important;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius: 10px !important;
+  }
+  thead {
+    th {
+      background: #13A2B4 !important;
+      color: #ffffff !important;
+      font-weight: 700!important;
+      font-size: 20px;
+    }
+  }
+}

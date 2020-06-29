@@ -1,0 +1,179 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Linksosmed extends MY_backend
+{
+    function __construct()
+    {
+        parent::__construct();
+
+		
+        //library breadcrum/untuk navigasi
+		$this->load->library('breadcrumb');
+		$this->load->library('urlcrypt');
+		
+		//breadcrumb untuk navigasi
+		$this->breadcrumb->add_crumb('Home');
+		$this->breadcrumb->add_crumb('Link Sosmed');
+		
+		$this->data['primary_title'] = '<i class="fa fa fa-gear"></i> Link Sosmed';
+		$this->data['sub_primary_title'] = '';
+		
+		$this->data['sub_title'] = 'Link Sosmed';
+		$this->layout->set_title($this->data['sub_title']);
+		
+		$this->table_link_sosmed = 'link_sosmed'; 
+		$this->validation_rule();
+
+		$this->data['list_icon'] = array(
+				array('facebook','Facebook'),
+				array('twitter','Twitter'),
+				array('instagram','Instagram'),
+				array('google-plus','Google Plus'),
+				array('linkedin-square','Linkedin')
+				);
+		
+    }
+	
+	// {VIEW} //
+	function index(){
+		$this->rule->type('R');
+	
+		$this->layout->set_include_group('index');
+		$this->layout->set_include('inline',getview('index_js',$this->data));
+		$this->layout->theme('backend','index', $this->data);	
+	}
+	
+	function show(){
+		$this->rule->type('R');
+		$id = $this->urlcrypt->decode($this->input->get('id'));
+		
+		$this->layout->set_include_group('form');
+		$this->layout->set_include('inline',getview('form_js'));
+
+		$this->data['list'] = $this->wd_db->get_data_row($this->table_link_sosmed,array('id'=>$id));
+		
+		$this->layout->theme('backend','show', $this->data);
+	}
+	
+	// {VALIDATION RULE} //
+	public function validation_rule(){
+		$this->data['rules'] = array(
+			array('field'   => 'link','label'   => 'Link','rules'   => 'required'),
+			array('field'   => 'icon','label'   => 'Icon','rules'   => 'required')
+		);
+		$this->data['rules_message'] = array();
+	}
+	
+	function add(){
+		$this->rule->type('C');
+		
+		//Run validate with js
+		$this->wd_validation->run_validate_js($this->data['rules'],$this->data['rules_message'],'#dt_form','.validate-js-message');
+
+		$this->layout->set_include_group('form');
+		$this->layout->set_include('inline',getview('form_js'));
+		$this->layout->theme('backend','add', $this->data);	
+	}
+	
+	function edit(){
+		$this->rule->type('U');
+		
+		$this->wd_validation->run_validate_js($this->data['rules'],$this->data['rules_message'],'#dt_form','.validate-js-message');
+		
+		$this->load->library('urlcrypt');
+		$id = $this->urlcrypt->decode($this->input->get('id'));
+		
+		$this->layout->set_include_group('form');
+		$this->layout->set_include('inline',getview('form_js')); 
+
+		$this->data['list'] = $this->wd_db->get_data_row($this->table_link_sosmed,array('id'=>$id));
+		
+		$this->layout->theme('backend','edit', $this->data);	
+	}
+	
+	// {ACTION} //
+	function save_action(){
+		$this->rule->type('C');
+		
+		if($this->ci_validation()==FALSE)
+			redirect(admin_dir().this_module().'/add');
+
+		$data = array(
+			
+			'link' => $this->input->post('link'),
+			'icon' => $this->input->post('icon')
+		);
+		
+		$this->wd_db->add_dml_get_id($this->table_link_sosmed,$data);
+		
+		redirect(admin_dir().this_module().'/add');
+	}
+	
+	function update_action(){
+		$this->rule->type('U');		
+		$id = $this->input->post('id');
+		$id = $this->urlcrypt->decode($id);
+
+		if($this->ci_validation()==FALSE)
+			redirect(admin_dir().this_module().'/edit?id='.$this->input->post('id'));
+		
+		$old = $this->wd_db->get_data($this->table_link_sosmed,array('id' => $id)) ;
+
+		$data = array(
+			
+			'link' => $this->input->post('link'),
+			'icon' => $this->input->post('icon')
+		);
+
+		
+		
+		$where = array(
+			'id' => $id
+		);
+		
+		$this->wd_db->edit_dml($this->table_link_sosmed,$data,$where);
+			
+		redirect(admin_dir().this_module().'/edit?id='.$this->input->post('id'));	
+	}
+	
+	function delete_action(){
+		
+		if($this->input->get('confirm') == null){
+			$this->confirm_delete($this->table_link_sosmed,'id','icon');
+			return;
+		}
+			
+		$del_id = $this->session->flashdata('del_id');
+		$this->wd_db->del_dml_where_in($this->table_link_sosmed,'id',$del_id);
+		
+		redirect(admin_dir().this_module());
+	}
+	
+	// {EXTEND FUNCTION} //
+	public function dataTable() {
+		$this -> load -> library('Datatable', array('model' => 'm_datatables', 'rowIdCol' => 'link_sosmed.id'));
+		$jsonArray = $this -> datatable -> datatableJson(array());
+
+
+		foreach ($jsonArray['data'] as $index => $json) {
+			foreach ($this->data['list_icon'] as $key => $value) {
+				if ($json['link_sosmed']['icon']==$value[0]) {
+					$jsonArray['data'][$index]['link_sosmed']['icon']=$value[1];
+				}				
+			}
+		}
+
+		$this -> output -> set_header('Pragma: no-cache');
+        $this -> output -> set_header('Cache-Control: no-store, no-cache');
+        $this -> output -> set_content_type('application/json') -> set_output(json_encode($jsonArray));
+	}
+}
+
+
+
+
+/* End of file LinkSosmed.php */
+/* Location: ./application/modules/LinkSosmed/controllers/LinkSosmed.php */
+/* Please DO NOT modify this information : */
+/* Generated by WD Codeigniter CRUD Generator 2016-10-26 08:36:59 */
+/* indonesiait.com */

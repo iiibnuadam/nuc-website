@@ -1,0 +1,149 @@
+ .template {
+    background-color: #e9e2d8;
+    height: 60px;
+}
+.year {
+    color: #1ca79d;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 1;
+}
+.content {
+    .title {
+        font-size: 24px;
+        line-height: 1;
+    }    
+ /*   .sub-title {
+        font-size: 21px;
+        line-height: 1;
+    }*/
+    .ulp {
+        font-size: 18px;
+        line-height: 2;
+        font-weight: 500;
+    }
+}
+.description-profil {
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+ .price {
+    font-size: 40px;
+    color: #fcaa24;
+    line-height: 1;
+    font-weight: bold;
+    .rp {
+        font-size:24px;
+    }
+}
+
+/*grid pengadaan*/
+.pengadaan {
+    .title-pengadaan {
+        font-size: 26px;
+        color: #576486;
+        text-transform: capitalize;
+    }
+    .sub-title-pengadaan {
+        font-size:20px;
+        color: #d95e4f;
+    }
+    .list-title {
+        font-size:16px;
+        color: #727a99;
+    }
+    .title-price {
+        color: #43577b !important;
+    }
+    .price-tiny {
+        .rp {
+            font-size:12px;
+        }
+    }
+}
+.description-pengaduan {
+    background-color: #e6e7ea;
+    .title-pengadaan {
+        font-size: 20px;
+        color: #d95e4f;
+        margin-bottom: 10px;
+    }
+    .desc-pengaduan {
+        margin-bottom:10px;
+    }
+    .keterangan {
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+}
+
+.desc-price {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fcaa24;
+    margin-bottom: 20px;
+}
+.description {
+    color: #fcaa24;
+    font-weight: bold;
+}
+.bg-segment {
+  background-color: #e2f1f4 !important;
+}
+.bg-sub-segment {
+  background-color: #f5f7ed !important;
+}
+.title-lelang {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.sub-title-lelang {
+    font-size:13px;
+}
+
+/*section perencanaan*/
+.perencanaan {
+    background-color: #fef2bb;
+    .percentage {
+        min-height: 80px !important;
+        min-width: 80px !important;
+        display: table;
+        span {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .ui.list {
+        .item {
+            padding-bottom: 0px !important;
+            padding-top:0px !important;
+        }
+    }
+    .title-perencanaan {
+        font-size: 30px;
+        color: #274a75;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+    .sub-title-perencanaan {
+        font-family: Nunito,Sans-Serif;
+        font-size: 26px;
+        color: #274a75;
+        line-height: 1.5;
+        font-style: italic;
+    }
+    .title-belanja {
+        font-size: 20px;
+        color: #274a75;
+        line-height: 1;
+    }
+    .title-percentage {
+        font-size: 18px;
+        color: #274a75;
+        line-height: 1;
+        font-family: Nunito,Sans-Serif;
+    }
+}

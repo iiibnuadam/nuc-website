@@ -1,0 +1,134 @@
+.component-header-top {
+  height: 120px;
+  background-size: cover;
+  color: #fff;
+  .ui.grid {
+    height: 120px;
+    margin-top: 0px;
+  }
+}
+
+.header-artikel {
+  .ui.grid {
+    margin: 0px !important;
+    height: 114px;
+  }
+}
+
+.component-dropdown {
+  background: #FFFFFF !important;
+  border: 1px solid #E0E0E0 !important;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  border-radius: 10px !important;
+}
+.wrapper-component-pagination {
+  .pagination.menu {
+    .item.active {
+      background: $blue-monev;
+      color: #ffffff !important;
+    }
+    .item {
+      color: $blue-monev !important;
+      a {
+        color: $blue-monev !important;
+      }
+    }
+  }
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  [class*="mobile hidden"],
+  [class*="tablet only"]:not(.mobile),
+  [class*="computer only"]:not(.mobile),
+  [class*="large screen only"]:not(.mobile),
+  [class*="widescreen only"]:not(.mobile),
+  [class*="or lower hidden"] {
+    display: none !important;
+  }
+  .component-dropdown {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .wrapper-component-pagination {
+    .pagination {
+      .item {
+        min-width: 1em !important;
+        padding: 9px !important;
+      }
+    }
+  }
+  .wrapper-component-pagination .pagination.menu .active.item {
+    padding: 9px;
+  }
+
+}
+
+.comp-table-th {
+  thead th {
+    background: #13A2B4 !important;
+    color: #ffffff !important;
+    font-weight: 700!important;
+    font-size: 16px;
+  }
+}
+#legend {
+  ul {
+    padding-left: 0px;
+  }
+}
+
+.comp-input-search {
+  background: #FFFFFF !important;
+  border: 1px solid #E0E0E0 !important;
+  border-radius: 10px !important;
+}
+
+.wrapper-rekap-pengadaan {
+  padding-bottom: 6rem;
+  .left-mobile-only {
+    .ui.dropdown.selection {
+      margin-bottom: 10px;
+    }
+  }
+}
+.wrapper-jabfung {
+  padding-bottom: 6rem;
+}
+.wrapper-smart-report {
+  padding-bottom: 6rem;
+}
+
+.wrapper-component-pagination {
+  .pagination.menu {
+    border: unset;
+    background: transparent;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+
+    .active.item {
+      border-radius: 25px;
+    }
+
+    .item:before {
+      background: unset !important;
+    }
+  }
+}
+
+.breadcrumb {
+  a {
+    color: $blue-monev !important;
+  }
+}
+.menu-bottom {
+  position: absolute !important;
+  bottom: 0;
+}
+
+.toggle-hide.deactive{
+  .chevron.icon {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
